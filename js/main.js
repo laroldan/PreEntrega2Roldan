@@ -42,6 +42,17 @@ console.log(Descuento(totalCompra));
 
 //LISTA DE COMIDAS POR CONSOLA
 
+const listado = document.querySelector("#listado");
+listado.addEventListener("click", () => {
+  console.log("LISTADO DE PLATOS:");
+  console.log("--------------");
+  productos.forEach((producto) => {
+    console.log(producto.nombre);
+  });
+  console.log("--------------");
+  alert("LISTA GENERADA EN CONSOLA\nF12 para visualizar.");
+});
+
 //EMPEZAR CON LA COMPRA
 
 let comenzar = document.querySelector("#comenzar");
