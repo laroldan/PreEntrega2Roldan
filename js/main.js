@@ -16,11 +16,22 @@ const compra = [];
 let totalCompra = 0;
 let nombre;
 let apellido;
+let nuevo;
 
 //functions
 
 function mayorQue(n) {
   return (m) => m > n;
+}
+
+function Plato(comida, cant, precio) {
+  this.nombre = comida;
+  this.cantidad = cant;
+  this.precio = precio;
+}
+
+function agregar() {
+  compra.push(nuevo);
 }
 
 //LISTA DE COMIDAS POR CONSOLA
@@ -57,17 +68,22 @@ comenzar.addEventListener("click", () => {
     return el.nombre.toLowerCase() == prod.toLowerCase();
   });
 
-  if (encontrado2 == false) {
-    alert("Producto no encontrado.");
+  if (encontrado2 == true) {
+    alert("Producto encontrado correctamente.");
   } else {
-    alert("Producto no encontrado correctamente.");
+    alert("Producto no encontrado.");
 
     //cuenta de precio * cant
     let posicion = productos.indexOf(encontrado);
     totalCompra += productos[posicion].precio * cant;
 
     //pushea el prod pedido y cantidad a nuevo array
-    compra.push(productos[pos]);
+    nuevo = new Plato(
+      productos[posicion].nombre,
+      cant,
+      productos[posicion].precio
+    );
+    agregar();
   }
 
   //cuenta al total
@@ -97,13 +113,22 @@ comenzar.addEventListener("click", () => {
       alert("Producto encontrado correctamente.");
     } else {
       alert("Producto no encontrado.");
+
+      //cuenta de precio * cant
+      let posicion = productos.indexOf(encontrado);
+      totalCompra += productos[posicion].precio * cant;
+
+      //pushea el prod pedido y cantidad a nuevo array
+      nuevo = new Plato(
+        productos[posicion].nombre,
+        cant,
+        productos[posicion].precio
+      );
+      agregar();
     }
-
-    let posicion = productos.indexOf(encontrado);
-    totalCompra += productos[posicion].precio * cant;
-
     opcion = prompt("Quieres seguir agregando comida? (1=SI | 0=NO)");
   }
+  console.log(compra);
 });
 
 //CARRITO POR CONSOLA
