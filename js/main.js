@@ -13,12 +13,14 @@ const productos = [
 
 const compra = [];
 
+//variables
+
 let totalCompra = 0;
 let nombre;
 let apellido;
 let nuevo;
 
-//functions
+//FUNCTIONS
 
 function mayorQue(n) {
   return (m) => m > n;
@@ -40,8 +42,8 @@ const listado = document.querySelector("#listado");
 listado.addEventListener("click", () => {
   console.log("◘ LISTADO DE PLATOS");
   console.log("--------------");
-  productos.forEach((producto) => {
-    console.log(producto.nombre + " $" + producto.precio);
+  productos.forEach((el) => {
+    console.log(el.nombre + " $" + el.precio);
   });
   console.log("--------------");
   alert("LISTA GENERADA EN CONSOLA\nF12 para visualizar.");
@@ -68,10 +70,10 @@ comenzar.addEventListener("click", () => {
     return el.nombre.toLowerCase() == prod.toLowerCase();
   });
 
-  if (encontrado2 == true) {
-    alert("Producto encontrado correctamente.");
-  } else {
+  if (encontrado2 == false) {
     alert("Producto no encontrado.");
+  } else {
+    alert("Producto encontrado correctamente.");
 
     //cuenta de precio * cant
     let posicion = productos.indexOf(encontrado);
@@ -85,14 +87,6 @@ comenzar.addEventListener("click", () => {
     );
     agregar();
   }
-
-  //cuenta al total
-
-  let posicion = productos.indexOf(encontrado);
-  totalCompra += productos[posicion].precio * cant;
-  //console.log(totalCompra);
-
-  //
 
   let opcion = prompt("Quieres seguir agregando comida? (1=SI | 0=NO)");
 
@@ -109,10 +103,10 @@ comenzar.addEventListener("click", () => {
       return el.nombre.toLowerCase() == prod.toLowerCase();
     });
 
-    if (encontrado2 == true) {
-      alert("Producto encontrado correctamente.");
-    } else {
+    if (encontrado2 == false) {
       alert("Producto no encontrado.");
+    } else {
+      alert("Producto encontrado correctamente.");
 
       //cuenta de precio * cant
       let posicion = productos.indexOf(encontrado);
@@ -129,6 +123,10 @@ comenzar.addEventListener("click", () => {
     opcion = prompt("Quieres seguir agregando comida? (1=SI | 0=NO)");
   }
   console.log(compra);
+  let descuento = mayorQue(10000);
+  if (descuento(totalCompra) == true) {
+    totalCompra = totalCompra - totalCompra * 0.2;
+  }
 });
 
 //CARRITO POR CONSOLA
@@ -138,6 +136,18 @@ carrito.addEventListener("click", () => {
   if (totalCompra == 0) {
     alert("USTED NO INGRESO NADA EN EL CARRITO");
     console.log("USTED NO INGRESO NADA EN EL CARRITO");
+  } else {
+    console.log("◘ CARRITO FINAL ◘");
+    console.log("------PLATOS CANTIDADES PRECIOxU-------");
+    compra.forEach((el) => {
+      console.log(el.nombre + "\t" + el.cantidad + "\t$" + el.precio);
+    });
+    console.log("");
+    console.log("EL DESCUENTO ES AUTOMATICO.");
+    console.log("TOTAL DE LA COMPRA =\t$" + totalCompra);
+    console.log("---------------------------------------");
+    alert(
+      "Tu carrito de compra se encuentra en la consola\n\nPLATOS PEDIDOS\nDESCUENTO\nTOTAL DEL PEDIDO"
+    );
   }
-  while (totalCompra != 0) {}
 });
