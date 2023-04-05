@@ -29,16 +29,11 @@ let totalCompra = 0;
 let nombre;
 let apellido;
 
-//usar prompts para luego usar find
+//functions
 
-//mayor que NUMERO para descuento
-//descuento a partir de $4000
 function mayorQue(n) {
   return (m) => m > n;
 }
-
-let Descuento = mayorQue(4000);
-console.log(Descuento(totalCompra));
 
 //LISTA DE COMIDAS POR CONSOLA
 
@@ -76,6 +71,13 @@ comenzar.addEventListener("click", () => {
   } else {
     alert("Producto no encontrado.");
   }
+
+  //cuenta al total
+
+  let posicion = productos.indexOf(encontrado);
+  totalCompra += productos[posicion].precio * cant;
+  //console.log(totalCompra);
+  //
 
   let opcion = prompt("Quieres seguir agregando comida? (1=SI | 0=NO)");
 
