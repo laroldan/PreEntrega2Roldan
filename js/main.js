@@ -40,7 +40,9 @@ function mayorQue(n) {
 let Descuento = mayorQue(4000);
 console.log(Descuento(totalCompra));
 
-//COMIENZO
+//LISTA DE COMIDAS POR CONSOLA
+
+//EMPEZAR CON LA COMPRA
 
 let comenzar = document.querySelector("#comenzar");
 comenzar.addEventListener("click", () => {
@@ -88,3 +90,5 @@ comenzar.addEventListener("click", () => {
     opcion = prompt("Quieres seguir agregando comida? (1=SI | 0=NO)");
   }
 });
+
+//CARRITO POR CONSOLA
