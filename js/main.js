@@ -11,18 +11,6 @@ const productos = [
   { id: 10, nombre: "Puchero", precio: 1299 },
 ];
 
-const integrantes = [
-  "Lautaro",
-  "Matias",
-  "Mariano",
-  "Julian",
-  "Nicolas",
-  "Tobias",
-  "Leandro",
-  "Nahuel",
-  "Tomas",
-];
-
 const compra = [];
 
 let totalCompra = 0;
@@ -54,22 +42,32 @@ let comenzar = document.querySelector("#comenzar");
 comenzar.addEventListener("click", () => {
   nombre = prompt("Ingrese su nombre:");
   apellido = prompt("Ingrese su apellido");
+
+  totalCompra = 0;
+
   let prod = prompt("Diganos que desea comer:");
   let cant = prompt("Cuantos platos de " + prod + " quiere?");
 
-  const encontrado = productos.find((el) => {
+  let encontrado = productos.find((el) => {
     return el.nombre.toLowerCase() == prod.toLowerCase();
   });
   console.log(encontrado);
 
-  const encontrado2 = productos.some((el) => {
+  let encontrado2 = productos.some((el) => {
     return el.nombre.toLowerCase() == prod.toLowerCase();
   });
 
-  if (encontrado2 == true) {
-    alert("Producto encontrado correctamente.");
-  } else {
+  if (encontrado2 == false) {
     alert("Producto no encontrado.");
+  } else {
+    alert("Producto no encontrado correctamente.");
+
+    //cuenta de precio * cant
+    let posicion = productos.indexOf(encontrado);
+    totalCompra += productos[posicion].precio * cant;
+
+    //pushea el prod pedido y cantidad a nuevo array
+    compra.push(productos[pos]);
   }
 
   //cuenta al total
@@ -77,6 +75,7 @@ comenzar.addEventListener("click", () => {
   let posicion = productos.indexOf(encontrado);
   totalCompra += productos[posicion].precio * cant;
   //console.log(totalCompra);
+
   //
 
   let opcion = prompt("Quieres seguir agregando comida? (1=SI | 0=NO)");
@@ -85,12 +84,12 @@ comenzar.addEventListener("click", () => {
     let prod = prompt("Diganos que más desea comer:");
     let cant = prompt("Cuantos platos de " + prod + " quiere?");
 
-    const encontrado = productos.find((el) => {
+    let encontrado = productos.find((el) => {
       return el.nombre.toLowerCase() == prod.toLowerCase();
     });
     console.log(encontrado);
 
-    const encontrado2 = productos.some((el) => {
+    let encontrado2 = productos.some((el) => {
       return el.nombre.toLowerCase() == prod.toLowerCase();
     });
 
@@ -100,8 +99,20 @@ comenzar.addEventListener("click", () => {
       alert("Producto no encontrado.");
     }
 
+    let posicion = productos.indexOf(encontrado);
+    totalCompra += productos[posicion].precio * cant;
+
     opcion = prompt("Quieres seguir agregando comida? (1=SI | 0=NO)");
   }
 });
 
 //CARRITO POR CONSOLA
+
+const carrito = document.querySelector("#carrito");
+carrito.addEventListener("click", () => {
+  if (totalCompra == 0) {
+    alert("USTED NO INGRESO NADA EN EL CARRITO");
+    console.log("USTED NO INGRESO NADA EN EL CARRITO");
+  }
+  while (totalCompra != 0) {}
+});
