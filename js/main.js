@@ -21,4 +21,33 @@ const integrantes = [
   "Tomas",
 ];
 
-//usar prompts
+let totalCompra = 0;
+let opcion;
+let nombre;
+let apellido;
+
+//usar prompts para luego usar find
+
+let ola = prompt("Ingrese prod:");
+const encontrado = productos.find((prod) => {
+  return prod.nombre == ola;
+});
+console.log(encontrado);
+
+//mayor que NUMERO para descuento
+function mayorQue(n) {
+  return (m) => m > n;
+}
+
+//descuento a partir de $4000
+let Descuento = mayorQue(4000);
+console.log(Descuento(totalCompra));
+
+//COMIENZO
+
+let comenzar = document.querySelector("#comenzar");
+comenzar.addEventListener("click", () => {
+  nombre = prompt("Ingrese su nombre:");
+  apellido = prompt("Ingrese su apellido");
+});
+
