@@ -13,13 +13,6 @@ const productos = [
 
 const compra = [];
 
-//VARIABLES
-
-let totalCompra = 0;
-let nombre;
-let apellido;
-let nuevo;
-
 //FUNCTIONS
 
 function mayorQue(n) {
@@ -36,11 +29,24 @@ function agregar() {
   compra.push(nuevo);
 }
 
+function numMesa() {
+  let mesa = Math.random() * 100;
+  return Math.floor(mesa);
+}
+
+//VARIABLES
+
+let totalCompra = 0;
+let nombre;
+let apellido;
+let nuevo;
+let mesa = numMesa();
+
 //LISTA DE COMIDAS POR CONSOLA
 
 const listado = document.querySelector("#listado");
 listado.addEventListener("click", () => {
-  console.log("◘ LISTADO DE PLATOS");
+  console.log("◘ LISTADO DE PLATOS\tMESA:" + mesa);
   console.log("--------------");
   productos.forEach((el) => {
     console.log(el.nombre + " $" + el.precio);
@@ -137,7 +143,7 @@ carrito.addEventListener("click", () => {
     alert("USTED NO INGRESO NADA EN EL CARRITO");
     console.log("USTED NO INGRESO NADA EN EL CARRITO");
   } else {
-    console.log("◘ CARRITO FINAL ◘");
+    console.log("◘ CARRITO FINAL\tMESA:" + mesa);
     console.log("------PLATOS CANTIDADES PRECIOxU-------");
     compra.forEach((el) => {
       console.log(el.nombre + "\t" + el.cantidad + "\t$" + el.precio);
@@ -146,8 +152,12 @@ carrito.addEventListener("click", () => {
     console.log("EL DESCUENTO ES AUTOMATICO.");
     console.log("TOTAL DE LA COMPRA =\t$" + totalCompra);
     console.log("---------------------------------------");
+
     alert(
       "Tu carrito de compra se encuentra en la consola\n\nPLATOS PEDIDOS\nDESCUENTO\nTOTAL DEL PEDIDO"
+    );
+    console.log(
+      "\nGRACIAS POR VISITARNOS: " + nombre + " " + apellido + " MESA: " + mesa
     );
   }
 });
