@@ -44,10 +44,10 @@ console.log(Descuento(totalCompra));
 
 const listado = document.querySelector("#listado");
 listado.addEventListener("click", () => {
-  console.log("LISTADO DE PLATOS:");
+  console.log("◘ LISTADO DE PLATOS");
   console.log("--------------");
   productos.forEach((producto) => {
-    console.log(producto.nombre);
+    console.log(producto.nombre + " $" + producto.precio);
   });
   console.log("--------------");
   alert("LISTA GENERADA EN CONSOLA\nF12 para visualizar.");
