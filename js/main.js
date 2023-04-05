@@ -13,7 +13,7 @@ const productos = [
 
 const compra = [];
 
-//variables
+//VARIABLES
 
 let totalCompra = 0;
 let nombre;
